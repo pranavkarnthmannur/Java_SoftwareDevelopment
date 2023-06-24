@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="85.0" layoutY="42.0" text="Date" />
+      <Label layoutX="85.0" layoutY="85.0" text="Weight (kg)" />
+      <Label layoutX="85.0" layoutY="128.0" text="Temperature (Celcius)" />
+      <Label layoutX="85.0" layoutY="170.0" text="Blood pressure" />
+      <Label layoutX="85.0" layoutY="219.0" text="Notes (Max 50 words)" />
+      <TextField fx:id="date" layoutX="290.0" layoutY="38.0" prefHeight="26.0" prefWidth="270.0" />
+      <TextField fx:id="wt" layoutX="289.0" layoutY="81.0" prefHeight="26.0" prefWidth="270.0" />
+      <TextField fx:id="temp" layoutX="289.0" layoutY="124.0" prefHeight="26.0" prefWidth="270.0" />
+      <Label layoutX="289.0" layoutY="170.0" text="Low" />
+      <Label layoutX="444.0" layoutY="170.0" text="High" />
+      <TextField fx:id="lbp" layoutX="323.0" layoutY="165.0" prefHeight="26.0" prefWidth="62.0" />
+      <TextField fx:id="hbp" layoutX="480.0" layoutY="165.0" prefHeight="26.0" prefWidth="62.0" />
+      <TextArea fx:id="note" layoutX="289.0" layoutY="219.0" prefHeight="124.0" prefWidth="270.0" />
+      <Button fx:id="add" layoutX="273.0" layoutY="361.0" mnemonicParsing="false" text="OK" />
+      <Button fx:id="gobackhome" layoutX="372.0" layoutY="361.0" mnemonicParsing="false" text="Cancel" />
+      <Label fx:id="errorrecord" layoutX="11.0" layoutY="250.0" prefHeight="138.0" prefWidth="250.0" />
+   </children>
+</AnchorPane>

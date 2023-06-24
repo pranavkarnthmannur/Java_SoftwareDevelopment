@@ -1,0 +1,121 @@
+package main.java.controller;
+
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import main.java.model.Model;
+import main.java.model.User;
+import main.java.model.UserRecord;
+import javafx.scene.control.TableColumn;
+
+public class delRecordViewController {
+	@FXML
+	private TableView healthrecord;
+	@FXML
+	private TableColumn date;
+	@FXML
+	private TableColumn weight;
+	@FXML
+	private TableColumn temperature;
+	@FXML
+	private TableColumn bloodpressurelow;
+	@FXML
+	private TableColumn bloodpressurehigh;
+	@FXML
+	private TableColumn notes;
+	@FXML
+	private Button todelete;
+	@FXML
+	private Button gobackhome;
+	@FXML
+	private Label deleted;
+	
+	private Model model;
+	private Stage stage;
+	private Stage parentStage;
+	private UserRecord records;
+	
+	// Constructor 
+	public delRecordViewController(Stage parentStage, Model model) {
+		this.stage = new Stage();
+		this.parentStage = parentStage;
+		this.model = model;
+	}
+	
+	
+	
+	@FXML
+	public void initialize() {
+		
+		User user;
+		user = model.getCurrentUser();
+		
+		//To populate the table with the user's health records
+		
+		date.setCellValueFactory( new PropertyValueFactory<UserRecord, String>("date"));
+		weight.setCellValueFactory( new PropertyValueFactory<UserRecord, Double>("weight"));
+		temperature.setCellValueFactory( new PropertyValueFactory<UserRecord, Double>("temperature"));
+		bloodpressurelow.setCellValueFactory( new PropertyValueFactory<UserRecord, Double>("lowbp"));
+		bloodpressurehigh.setCellValueFactory( new PropertyValueFactory<UserRecord, Double>("highbp"));
+		notes.setCellValueFactory( new PropertyValueFactory<UserRecord, String>("notes"));
+		
+		for(UserRecord x: user.getrecords())
+		{
+		healthrecord.getItems().add(x);
+		}
+		
+		// Navigate back to the home page 
+		gobackhome.setOnAction(event -> {
+			stage.close();	 
+		});
+		
+		// Delete the chosen record 
+		todelete.setOnAction(event ->{
+			
+    		ObservableList<UserRecord> recordsall;
+    		recordsall = healthrecord.getItems();
+    		if(!recordsall.isEmpty())
+    		{
+    		UserRecord tobedel = (UserRecord) healthrecord.getSelectionModel().getSelectedItem();
+    		try {
+    			model.getUserDao().delRec(tobedel.getrID());
+    			ObservableList<UserRecord> selectedrecs = healthrecord.getSelectionModel().getSelectedItems();
+        		selectedrecs.forEach(recordsall :: remove);
+        		model.getCurrentUser().getrecords().removeIf(rec -> rec.getrID() == tobedel.getrID());
+        		deleted.setText("DELETED");
+        		deleted.setTextFill(Color.GREEN);
+
+    		}
+    		catch(Exception e){
+    			System.out.println(e.getMessage());
+    		}
+    		}
+    		else
+    		{
+    			deleted.setText("NO RECORDS");
+        		deleted.setTextFill(Color.RED);	
+    		}
+    
+    	});
+		
+	}
+	
+	// Method to show the stage
+	public void showStage(Pane root) {
+		Scene scene = new Scene(root, 800, 500);
+		stage.setScene(scene);
+		stage.setResizable(false);
+		stage.setTitle("Delete Record");
+		stage.show();
+	}
+	
+
+
+}

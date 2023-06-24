@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="450.0" prefWidth="544.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <MenuBar fx:id="menu" prefHeight="25.0" prefWidth="870.0" VBox.vgrow="NEVER">
+      <menus>
+            <Menu fx:id="profile" mnemonicParsing="false" text="Records">
+              <items>
+                <MenuItem fx:id="newRecord" mnemonicParsing="false" text="New record" />
+                  <MenuItem fx:id="edit" mnemonicParsing="false" text="Edit an existing record" />
+                  <MenuItem fx:id="delete" mnemonicParsing="false" text="Delete an existing record" />
+                  <MenuItem fx:id="viewallrecords" mnemonicParsing="false" text="View all records" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Profile">
+              <items>
+                <MenuItem fx:id="viewProfile" mnemonicParsing="false" text="View my profile" />
+                  <MenuItem fx:id="updateProfile" mnemonicParsing="false" text="Update my profile" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Export">
+              <items>
+                <MenuItem fx:id="export" mnemonicParsing="false" text="Export Records" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="About">
+              <items>
+                  <MenuItem fx:id="about" mnemonicParsing="false" text="About MyHealth" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Account">
+              <items>
+                  <MenuItem fx:id="logout" mnemonicParsing="false" text="Log out" />
+              </items>
+            </Menu>
+      </menus>
+    </MenuBar>
+      <Pane prefHeight="132.0" prefWidth="544.0">
+         <children>
+            <Label fx:id="addusername" layoutX="345.0" layoutY="58.0" />
+            <Label fx:id="error" layoutX="258.0" layoutY="110.0" />
+         </children>
+      </Pane>
+      <TextArea editable="false" prefHeight="258.0" prefWidth="544.0" text="User Manual:&#10;&#10;1. Navigate to Records to view, add, delete, update records.&#10;2. Navigate to Profile to view and update profile.&#10;3. Navigate to export to export your chosen records to file.&#10;4. To log out, navigate to account.  ">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextArea>
+  </children>
+</VBox>

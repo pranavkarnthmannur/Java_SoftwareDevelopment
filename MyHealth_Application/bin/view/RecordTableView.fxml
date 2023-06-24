@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView fx:id="healthrecord" layoutX="31.0" layoutY="14.0" prefHeight="335.0" prefWidth="559.0">
+        <columns>
+          <TableColumn fx:id="date" prefWidth="77.5999755859375" text="Date" />
+          <TableColumn fx:id="weight" prefWidth="79.20001220703125" text="Weight (kg)" />
+            <TableColumn fx:id="temperature" prefWidth="91.20001220703125" text="Temperature" />
+            <TableColumn fx:id="bloodpressurelow" prefWidth="60.79998779296875" text="BP-low" />
+            <TableColumn fx:id="bloodpressurehigh" prefWidth="73.60003662109375" text="BP-high" />
+            <TableColumn fx:id="notes" prefWidth="174.4000244140625" text="Notes" />
+        </columns>
+      </TableView>
+      <Button fx:id="gobackhome" layoutX="213.0" layoutY="359.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="173.0" text="Go Back Home" />
+   </children>
+</AnchorPane>
